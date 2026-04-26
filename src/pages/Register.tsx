@@ -52,7 +52,7 @@ export default function Register() {
         ? registerCustomer({ username, email, password, address })
         : registerSeller({ username, email, password, storeName, storeAddress: address });
 
-    if (!result.ok) {
+    if (result.ok === false) {
       setErrors({ form: result.error });
       return;
     }

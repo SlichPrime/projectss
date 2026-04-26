@@ -24,7 +24,7 @@ export default function Login() {
       return;
     }
     const result = login(email, password);
-    if (!result.ok) {
+    if (result.ok === false) {
       setErrors({ form: result.error });
       return;
     }
