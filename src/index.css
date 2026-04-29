@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* SecondCycle design system — Red, Black, Gold, Brown editorial palette.
+/* RE:PURO design system — Navy, sky-blue, cream FNB palette.
    All colors MUST be HSL.
 */
 
@@ -10,60 +10,51 @@
 
 @layer base {
   :root {
-    /* Warm cream background, deep brown ink */
-    --background: 36 30% 96%;
-    --foreground: 20 30% 12%;
+    /* Cream paper background, navy ink */
+    --background: 200 35% 96%;
+    --foreground: 215 65% 18%;
 
-    --card: 36 35% 98%;
-    --card-foreground: 20 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 65% 18%;
 
-    --popover: 36 35% 98%;
-    --popover-foreground: 20 30% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 65% 18%;
 
-    /* Primary: deep oxblood red */
-    --primary: 0 65% 32%;
-    --primary-foreground: 36 40% 96%;
+    /* Primary: deep navy blue */
+    --primary: 215 70% 22%;
+    --primary-foreground: 200 40% 96%;
 
-    /* Secondary: warm brown */
-    --secondary: 25 35% 22%;
-    --secondary-foreground: 36 40% 96%;
+    /* Secondary: sky / pale blue */
+    --secondary: 200 55% 80%;
+    --secondary-foreground: 215 70% 22%;
 
-    --muted: 32 20% 88%;
-    --muted-foreground: 25 15% 35%;
+    --muted: 200 35% 90%;
+    --muted-foreground: 215 25% 40%;
 
-    /* Accent: antique gold */
-    --accent: 40 65% 50%;
-    --accent-foreground: 20 30% 12%;
+    /* Accent: warm cream */
+    --accent: 36 45% 92%;
+    --accent-foreground: 215 70% 22%;
 
-    --destructive: 0 75% 40%;
-    --destructive-foreground: 36 40% 96%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 200 40% 96%;
 
-    --border: 30 20% 82%;
-    --input: 30 20% 85%;
-    --ring: 0 65% 32%;
+    --border: 200 30% 85%;
+    --input: 200 30% 85%;
+    --ring: 215 70% 22%;
 
     /* Brand-specific tokens */
-    --gold: 40 70% 52%;
-    --gold-foreground: 20 30% 12%;
-    --brown: 25 35% 22%;
-    --brown-deep: 20 40% 14%;
-    --oxblood: 0 65% 32%;
-    --ink: 20 30% 8%;
-    --cream: 36 40% 95%;
+    --navy: 215 70% 22%;
+    --navy-deep: 215 75% 15%;
+    --sky: 200 60% 78%;
+    --sky-soft: 200 65% 90%;
+    --cream: 36 45% 94%;
+    --paper: 200 35% 96%;
 
-    /* Grade chip colors */
-    --grade-s: 40 75% 50%;
-    --grade-a: 140 50% 35%;
-    --grade-b: 200 55% 40%;
-    --grade-c: 30 60% 45%;
-    --grade-d: 0 50% 45%;
+    --gradient-hero: linear-gradient(135deg, hsl(215 75% 18%) 0%, hsl(215 70% 28%) 100%);
+    --shadow-elegant: 0 24px 60px -24px hsl(215 75% 15% / 0.35);
+    --shadow-soft: 0 4px 20px -8px hsl(215 75% 15% / 0.15);
 
-    --gradient-hero: linear-gradient(135deg, hsl(20 40% 14%) 0%, hsl(0 65% 22%) 60%, hsl(40 70% 35%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(40 75% 55%), hsl(35 65% 42%));
-    --shadow-elegant: 0 20px 50px -20px hsl(20 40% 14% / 0.35);
-    --shadow-soft: 0 4px 20px -8px hsl(20 40% 14% / 0.18);
-
-    --radius: 0.25rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -82,19 +73,26 @@
     font-optical-sizing: auto;
     letter-spacing: -0.01em;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer components {
-  .grade-chip {
-    @apply inline-flex h-7 w-7 items-center justify-center rounded-full font-display text-sm font-bold;
-  }
-  .grade-S { background: hsl(var(--grade-s)); color: hsl(var(--ink)); }
-  .grade-A { background: hsl(var(--grade-a)); color: hsl(var(--cream)); }
-  .grade-B { background: hsl(var(--grade-b)); color: hsl(var(--cream)); }
-  .grade-C { background: hsl(var(--grade-c)); color: hsl(var(--cream)); }
-  .grade-D { background: hsl(var(--grade-d)); color: hsl(var(--cream)); }
-
   .hairline {
     @apply border-t border-border/60;
+  }
+
+  .scallop-top {
+    --r: 14px;
+    -webkit-mask:
+      radial-gradient(var(--r) at 50% calc(100% + 1px), #0000 98%, #000) 50% / calc(var(--r) * 2.4) 100%;
+            mask:
+      radial-gradient(var(--r) at 50% calc(100% + 1px), #0000 98%, #000) 50% / calc(var(--r) * 2.4) 100%;
   }
 }
