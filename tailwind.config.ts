@@ -47,17 +47,16 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          foreground: "hsl(var(--gold-foreground))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          deep: "hsl(var(--navy-deep))",
         },
-        brown: {
-          DEFAULT: "hsl(var(--brown))",
-          deep: "hsl(var(--brown-deep))",
+        sky: {
+          DEFAULT: "hsl(var(--sky))",
+          soft: "hsl(var(--sky-soft))",
         },
-        oxblood: "hsl(var(--oxblood))",
-        ink: "hsl(var(--ink))",
         cream: "hsl(var(--cream))",
+        paper: "hsl(var(--paper))",
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -65,7 +64,6 @@ export default {
       },
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',
-        'gradient-gold': 'var(--gradient-gold)',
       },
       boxShadow: {
         elegant: 'var(--shadow-elegant)',

@@ -1,98 +1,108 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState, type FormEvent } from "react";
-import { LogOut, Search, ShoppingBag, User as UserIcon, Package, Shield } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
-import { useStore } from "@/lib/store";
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+const NAV = [
+  { id: "home", label: "Home" },
+  { id: "story", label: "Our Story" },
+  { id: "bestseller", label: "Bestseller" },
+  { id: "menu", label: "Menu" },
+  { id: "contact", label: "Contact" },
+];
 
 export function Navbar() {
-  const { currentUser, cart, logout } = useStore();
-  const navigate = useNavigate();
-  const [q, setQ] = useState("");
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
-  const onSearch = (e: FormEvent) => {
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
+    NAV.forEach((n) => {
+      const el = document.getElementById(n.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
-    const term = q.trim();
-    navigate(term ? `/products?q=${encodeURIComponent(term)}` : "/products");
+    setOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
-      <div className="container flex h-16 items-center gap-4">
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+        scrolled
+          ? "border-b border-border/60 bg-paper/90 backdrop-blur"
+          : "bg-transparent",
+      )}
+    >
+      <div className="container flex h-16 items-center justify-between md:h-20">
         <Logo />
 
-        {currentUser?.role !== "admin" && (
-          <form onSubmit={onSearch} className="ml-2 hidden flex-1 md:block">
-            <div className="relative max-w-xl">
-              <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <input
-                value={q}
-                onChange={(e) => setQ(e.target.value)}
-                placeholder="Search the salvage…"
-                className="h-10 w-full rounded-sm border border-border bg-background pl-9 pr-3 text-sm outline-none transition-colors focus:border-oxblood"
-              />
-            </div>
-          </form>
-        )}
-
-        <nav className="ml-auto flex items-center gap-1">
-          {!currentUser && (
-            <>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/login">Sign in</Link>
-              </Button>
-              <Button asChild size="sm" className="bg-oxblood text-primary-foreground hover:bg-oxblood/90">
-                <Link to="/register">Join</Link>
-              </Button>
-            </>
-          )}
-
-          {currentUser?.role === "customer" && (
-            <>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/cart" className="relative">
-                  <ShoppingBag className="h-4 w-4" />
-                  <span className="ml-1.5 hidden sm:inline">Cart</span>
-                  {cart.length > 0 && (
-                    <span className="ml-2 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-oxblood px-1.5 text-[10px] font-semibold text-primary-foreground">
-                      {cart.length}
-                    </span>
-                  )}
-                </Link>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/orders"><Package className="h-4 w-4 sm:mr-1.5" /><span className="hidden sm:inline">Orders</span></Link>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/profile"><UserIcon className="h-4 w-4 sm:mr-1.5" /><span className="hidden sm:inline">Profile</span></Link>
-              </Button>
-            </>
-          )}
-
-          {currentUser?.role === "seller" && (
-            <>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/seller/orders"><Package className="h-4 w-4 sm:mr-1.5" /><span className="hidden sm:inline">Orders</span></Link>
-              </Button>
-              <Button asChild variant="ghost" size="sm">
-                <Link to="/seller/profile"><UserIcon className="h-4 w-4 sm:mr-1.5" /><span className="hidden sm:inline">Store</span></Link>
-              </Button>
-            </>
-          )}
-
-          {currentUser?.role === "admin" && (
-            <Button asChild variant="ghost" size="sm">
-              <Link to="/admin"><Shield className="h-4 w-4 sm:mr-1.5" /><span className="hidden sm:inline">Admin</span></Link>
-            </Button>
-          )}
-
-          {currentUser && (
-            <Button variant="ghost" size="sm" onClick={() => { logout(); navigate("/"); }}>
-              <LogOut className="h-4 w-4" />
-            </Button>
-          )}
+        <nav className="hidden items-center gap-1 md:flex">
+          {NAV.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleClick(e, item.id)}
+              className={cn(
+                "relative rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                active === item.id
+                  ? "bg-navy text-cream"
+                  : "text-navy/80 hover:text-navy",
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
+
+        <button
+          aria-label="Toggle menu"
+          className="grid h-10 w-10 place-items-center rounded-full bg-navy text-cream md:hidden"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
       </div>
+
+      {open && (
+        <div className="border-t border-border/60 bg-paper md:hidden">
+          <nav className="container flex flex-col py-2">
+            {NAV.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => handleClick(e, item.id)}
+                className={cn(
+                  "py-3 text-sm font-medium",
+                  active === item.id ? "text-navy" : "text-navy/70",
+                )}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   );
 }

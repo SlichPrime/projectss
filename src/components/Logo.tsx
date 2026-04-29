@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom";
+import { Coffee } from "lucide-react";
 
-export function Logo({ className = "" }: { className?: string }) {
+interface LogoProps {
+  variant?: "light" | "dark";
+}
+
+export function Logo({ variant = "dark" }: LogoProps) {
+  const color = variant === "light" ? "text-cream" : "text-navy";
   return (
-    <Link to="/" className={`group inline-flex items-center gap-2 ${className}`}>
-      <span className="relative inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-full bg-gradient-gold shadow-soft">
-        <span className="font-display text-lg font-black text-ink">S</span>
+    <a href="#home" className={`inline-flex items-center gap-2 ${color}`}>
+      <span className="grid h-8 w-8 place-items-center rounded-full bg-navy text-cream">
+        <Coffee className="h-4 w-4" />
       </span>
-      <span className="font-display text-xl font-semibold tracking-tight text-foreground">
-        Second<span className="text-oxblood">Cycle</span>
+      <span className="font-display text-lg font-semibold tracking-tight">
+        RE<span className="text-sky">:</span>PURO
       </span>
-    </Link>
+    </a>
   );
 }
