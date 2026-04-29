@@ -2,20 +2,20 @@ import { ArrowRight, Coffee, Instagram, Mail, MapPin, Phone } from "lucide-react
 import { Navbar } from "@/components/Navbar";
 import { Logo } from "@/components/Logo";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/repuro-hero.jpg";
-import bestsellerImg from "@/assets/repuro-bestseller.jpg";
-import story1 from "@/assets/repuro-story1.jpg";
-import story2 from "@/assets/repuro-story2.jpg";
-import caramel from "@/assets/menu-caramel.jpg";
-import americano from "@/assets/menu-americano.jpg";
-import hazelnut from "@/assets/menu-hazelnut.jpg";
-import matcha from "@/assets/menu-matcha.jpg";
+import heroImg from "@/assets/repuro-hero.png";
+import bestsellerImg from "@/assets/repuro-bestseller.png";
+import story1 from "@/assets/repuro-story1.png";
+import story2 from "@/assets/repuro-story2.png";
+import aren from "@/assets/menu-aren.png";
+import americano from "@/assets/menu-americano.png";
+import caffe from "@/assets/menu-caffe.jpeg";
+import choco from "@/assets/menu-choco.png";
 
 const MENU = [
-  { name: "Caramel Oat Latte", price: "Rp 28.000", img: caramel },
+  { name: "Aren latte", price: "Rp 28.000", img: aren },
   { name: "Iced Americano", price: "Rp 22.000", img: americano },
-  { name: "Hazelnut Latte", price: "Rp 30.000", img: hazelnut },
-  { name: "Matcha Latte", price: "Rp 32.000", img: matcha },
+  { name: "caffe Latte", price: "Rp 30.000", img: caffe },
+  { name: "Choco Latte", price: "Rp 32.000", img: choco },
 ];
 
 export default function Index() {
@@ -100,18 +100,14 @@ export default function Index() {
                 className="w-full rounded-xl object-cover shadow-soft"
               />
               <p className="text-navy/80">
-                RE:PURO began as a two-seat bar in Bandung — a place where the
-                espresso machine ran longer than the open sign. We built our
-                menu around a single belief: a great cup turns a hurried
-                morning into a small ceremony.
+                RE: PURO began in the halls of BINUS University as a simple academic challenge: create a business that matters. What started as a project quickly turned into a passion for the perfect brew.
+
               </p>
             </div>
             <div className="space-y-4 md:pt-16">
               <p className="text-navy/80">
-                Today RE:PURO is a tiny roastery and pop-up team, sourcing
-                single-origin beans from Aceh, Toraja, and Bali. Every jar is
-                cold-brewed in micro-batches and capped by hand the morning it
-                leaves the studio.
+                RE: PURO began in the halls of BINUS University as a simple academic challenge: create a business that matters. What started as a project quickly turned into a passion for the perfect brew.
+
               </p>
               <img
                 src={story2}

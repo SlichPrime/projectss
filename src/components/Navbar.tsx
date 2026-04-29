@@ -47,13 +47,12 @@ export function Navbar() {
 
   return (
     <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-border/60 bg-paper/90 backdrop-blur"
-          : "bg-transparent",
-      )}
-    >
+  className={cn(
+    "fixed inset-x-0 top-0 z-50 transition-all duration-300",
+    "bg-white border-b border-border/60", // Always white and visible
+    scrolled ? "backdrop-blur-md bg-white/90" : "bg-white" 
+  )}
+>
       <div className="container flex h-16 items-center justify-between md:h-20">
         <Logo />
 
