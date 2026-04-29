@@ -214,29 +214,22 @@ export default function Index() {
           </div>
 
           <div className="space-y-3 text-sm">
-            <h4 className="font-display text-base text-sky">Visit us</h4>
-            <p className="flex items-start gap-2 text-cream/80">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky" />
-              Jl. Riau No. 24, Bandung, Indonesia
-            </p>
+            <h4 className="font-display text-base text-sky">Contact Us</h4>
+            <a
+              href="https://www.instagram.com/pur0.coffee/?hl=en"
+              className="mt-3 inline-flex items-center gap-2 text-sky hover:underline"
+            >
+              <Instagram className="h-4 w-4" /> @repuro.coffee
+            </a>
             <p className="flex items-center gap-2 text-cream/80">
               <Phone className="h-4 w-4 text-sky" /> +62 812 3456 7890
-            </p>
-            <p className="flex items-center gap-2 text-cream/80">
-              <Mail className="h-4 w-4 text-sky" /> hello@repuro.id
             </p>
           </div>
 
           <div className="space-y-3 text-sm">
             <h4 className="font-display text-base text-sky">Hours</h4>
-            <p className="text-cream/80">Mon – Fri · 07:00 – 22:00</p>
-            <p className="text-cream/80">Sat – Sun · 08:00 – 23:00</p>
-            <a
-              href="#"
-              className="mt-3 inline-flex items-center gap-2 text-sky hover:underline"
-            >
-              <Instagram className="h-4 w-4" /> @repuro.coffee
-            </a>
+            {/* // sebelah nya buat contact */}
+          
           </div>
         </div>
 
