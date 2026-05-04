@@ -14,7 +14,7 @@ import choco from "@/assets/menu-choco.png";
 const MENU = [
   { name: "Aren latte", price: "Rp 28.000", img: aren },
   { name: "Iced Americano", price: "Rp 22.000", img: americano },
-  { name: "caffe Latte", price: "Rp 30.000", img: caffe },
+  { name: "Signature oat Latte", price: "Rp 35.000", img: caffe },
   { name: "Choco Latte", price: "Rp 32.000", img: choco },
 ];
 
@@ -106,7 +106,7 @@ export default function Index() {
             </div>
             <div className="space-y-4 md:pt-16">
               <p className="text-navy/80">
-                RE: PURO began in the halls of BINUS University as a simple academic challenge: create a business that matters. What started as a project quickly turned into a passion for the perfect brew.
+                Today, we are a team of coffee enthusiasts committed to bringing high-quality, order-based coffee to our community, one cup at a time.
 
               </p>
               <img
@@ -227,7 +227,7 @@ export default function Index() {
           </div>
 
           <div className="space-y-3 text-sm">
-            <h4 className="font-display text-base text-sky">Hours</h4>
+            <h4 className="font-display text-base text-sky"></h4>
             {/* // sebelah nya buat contact */}
           
           </div>
