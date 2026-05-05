@@ -14,7 +14,7 @@ import choco from "@/assets/menu-choco.png";
 const MENU = [
   { name: "Aren Latte", price: "Rp 28.000", img: aren },
   { name: "Iced Americano", price: "Rp 22.000", img: americano },
-  { name: "Signature Oat Latte", price: "Rp 35.000", img: caffe },
+  { name: "Signature Oat Latte", price: "Rp 19.000", img: caffe },
   { name: "Choco Latte", price: "Rp 32.000", img: choco },
 ];
 
@@ -141,7 +141,7 @@ export default function Index() {
                 double shot and a kiss of palm-sugar caramel. Bottled cold,
                 shaken before sipping.
               </p>
-              <p className="mt-6 font-display text-2xl text-sky">Rp 35.000</p>
+              <p className="mt-6 font-display text-2xl text-sky">Rp 19.000</p>
             </div>
             <div className="relative order-1 md:order-2">
               <div className="absolute inset-0 mx-auto h-72 w-72 translate-y-8 rounded-full bg-sky/30 blur-3xl md:h-96 md:w-96" />
