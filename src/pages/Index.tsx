@@ -12,9 +12,9 @@ import caffe from "@/assets/menu-caffe.jpeg";
 import choco from "@/assets/menu-choco.png";
 
 const MENU = [
-  { name: "Aren latte", price: "Rp 28.000", img: aren },
+  { name: "Aren Latte", price: "Rp 28.000", img: aren },
   { name: "Iced Americano", price: "Rp 22.000", img: americano },
-  { name: "Signature oat Latte", price: "Rp 35.000", img: caffe },
+  { name: "Signature Oat Latte", price: "Rp 35.000", img: caffe },
   { name: "Choco Latte", price: "Rp 32.000", img: choco },
 ];
 
